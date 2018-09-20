@@ -1,17 +1,16 @@
 package action;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
-import com.mysql.cj.Session;
 import com.opensymphony.xwork2.ActionSupport;
 
 import dao.AnswerDao;
 import dao.WordDao;
 import model.Answer;
 import model.Question;
+import model.QuestionAnswer;
 import model.Word;
 
 public class WordAction extends ActionSupport {
@@ -23,9 +22,11 @@ public class WordAction extends ActionSupport {
 
     
     private List<Question> listQuestion;
+    private List<QuestionAnswer> listQa;
 
     public String execute() throws Exception {
     	listQuestion = new ArrayList<Question>();
+    	listQa = new ArrayList<QuestionAnswer>();
     	List<Word> listWords;
         List<Answer> listAnswer;
         int numOfQuestion = 5;
@@ -40,7 +41,7 @@ public class WordAction extends ActionSupport {
         for(int i=0;i<numOfQuestion;i++) {
         	Question question=new Question();
         	listAnswer = answerDao.getListAnswer(listWords.get(i).getId());
-        	Collections.shuffle(listAnswer);
+//        	Collections.shuffle(listAnswer);
         	question.setWord(listWords.get(i));
         	question.setListAnswer(listAnswer);
         	listQuestion.add(question);
@@ -49,6 +50,14 @@ public class WordAction extends ActionSupport {
 
         return SUCCESS;
     }
+
+	public List<QuestionAnswer> getListQa() {
+		return listQa;
+	}
+
+	public void setListQa(List<QuestionAnswer> listQa) {
+		this.listQa = listQa;
+	}
 
 	public List<Question> getListQuestion() {
 		return listQuestion;

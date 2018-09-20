@@ -918,9 +918,14 @@ i.di-var {
 	vertical-align: top
 }
 
-.C-code, .cpp-code, .java-code, .csharp-code, .networking-code {
+.C-code, .cpp-code, .csharp-code, .networking-code {
 	font-family: 'Courier New';
 	color: #d00
+}
+
+.java-code {
+	font-weight: bold;
+	color: red;
 }
 
 .cpp-ol-123, .java-ol-1234, .csharp-ol-123, .networking-ol-123 {
@@ -1979,16 +1984,27 @@ div.inner-footer {
 	}
 }
 
-ol{
+ol {
 	list-style-type: upper-alpha !important;
 	margin-left: 0px;
-	
 }
 
 .inputAw {
 	margin-top: 10px !important;
 }
 
-.liAw{
+.liAw {
 	margin-top: 0px !important;
+}
+
+.correct {
+	color: red;
+	font-size: 30px;
+}
+.true + label{
+	color: green;
+}
+
+.false + label{
+	color: red;
 }

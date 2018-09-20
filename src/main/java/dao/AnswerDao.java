@@ -33,6 +33,8 @@ public class AnswerDao {
         session.beginTransaction();
         listAnswers=session.createQuery("from Answer A where A.wordId =:wordId AND A.id=:answerId AND A.correctAnswer = 1 ")
         		.setParameter("wordId", wordId).setParameter("answerId", answerId).list();
+        session.getTransaction().commit();
+        session.close();
         if(listAnswers!=null && !listAnswers.isEmpty()) return true;
         
         return false;

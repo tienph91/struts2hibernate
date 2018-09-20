@@ -12,7 +12,7 @@
 		</action>
 		<action name="testAction" class="action.TestAction"
 			method="execute">
-			<result name="success">pages/index.jsp</result>
+			<result name="success">pages/test.jsp</result>
 		</action>
 	</package>
 </struts>

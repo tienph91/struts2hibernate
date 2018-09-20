@@ -17,5 +17,6 @@
 		<mapping class="model.Word" />
 		<mapping class="model.Answer" />
 		
+		
 	</session-factory>
 </hibernate-configuration>
