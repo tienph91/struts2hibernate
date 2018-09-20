@@ -13,9 +13,8 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="js/test.js"></script>
 </head>
-<body>
+<body onload="f1">
 
 	<s:if test="%{count !=null }">
 		<p class="correct">
@@ -23,10 +22,16 @@
 			<s:property value="count" />
 		</p>
 	</s:if>
+
 	<div id="divTabContent" class="container"
-		style="width: 100%; display: block;" class="mx-none">
+		style="width: 100%; display: block; margin-left: 30px; margin-top: 20px;"
+		class="mx-none">
+		<s:if test="%{count ==null }">
+			<div id="clock" class="div-clock"></div>
+		</s:if>
 
 		<div class="bix-div-container">
+
 			<s:form action="testAction">
 				<s:iterator value="listQuestion" var="question" status="st">
 					<s:hidden key="listQa[%{#st.index}].wordId"
@@ -37,7 +42,7 @@
 						<tbody>
 							<tr>
 								<td class="bix-td-qno jq-qno-148" rowspan="2" valign="top"
-									align="left"><s:property value="%{#st.count}" /></td>
+									align="left"><s:property value="%{#st.count}" />.</td>
 								<td class="bix-td-qtxt" valign="top">
 									<p>
 										What is <i class="java-code"><s:property
@@ -47,11 +52,11 @@
 
 									<ol class="java-ol-1234">
 										<s:if test="%{count !=null }">
-											<s:radio  theme="simple" list="#question.listAnswer"
+											<s:radio theme="simple" list="#question.listAnswer"
 												listKey="id" listValue="answer" listCssClass="correctAnswer"
 												cssClass="answer" name="listQa[%{#st.index}].answerId" />
 										</s:if>
-										
+
 										<s:else>
 											<s:radio theme="simple" list="#question.listAnswer"
 												listKey="id" listValue="answer" cssClass="answer"
@@ -63,20 +68,53 @@
 									<p></p>
 								</td>
 							</tr>
-							
+
 						</tbody>
 					</table>
 				</s:iterator>
-				<s:submit></s:submit>
+				<s:submit id="btnSubmit" class="submit"></s:submit>
+			</s:form>
+			<p></p>
+			<s:form action="entryTestAction" cssStyle="width:100%;">
+				<s:submit class="submit" value="refesh"></s:submit>
 			</s:form>
 		</div>
 
 	</div>
-	<!-- 	<div id="divSubmitTest" align="center" -->
-	<!-- 		style="padding: 20px; margin-top: 20px; margin-bottom: 20px; border: 1px dashed rgb(204, 204, 204); background-color: rgb(253, 253, 253);"> -->
-	<!-- 		<input style="height: 30px; font-size: 14px" align="center" -->
-	<!-- 			type="button" value="   Submit Test   " id="btnSubmitTest" ac> -->
-	<!-- 	</div> -->
+	<script type="text/javascript">
+		$(document).ready(function() {
+			var labels = $("label[class='answer']");
+			for (var i = 0; i < labels.length; i++) {
+				$(labels[i]).after("<br/>");
+			}
 
+		})
+	</script>
+	<script type="text/javascript">
+		//  Countdown Timer
+		var min = 4;
+		var sec = 59;
+		var interval = setInterval(function() {
+			if (sec > 0) {
+				sec = sec - 1;
+				document.getElementById("clock").innerHTML = min + " : " + sec;
+			} else {
+				if (sec == 0) {
+					if (min == 0) {
+						clearInterval(interval);
+						document.getElementById('clock').innerHTML = 'Done';
+						// or...
+						alert("You're out of time!");
+						document.getElementById('btnSubmit').click();
+					} else {
+						min = min - 1;
+						sec = 60;
+						document.getElementById("clock").innerHTML = min
+								+ " : " + sec;
+					}
+				}
+			}
+		}, 1000);
+	</script>
 </body>
 </html>
