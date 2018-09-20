@@ -8,6 +8,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import listener.HibernateListener;
+import model.Answer;
 import model.Word;
 
 public class WordDao {
@@ -25,6 +26,10 @@ public class WordDao {
         listWords = session.createQuery("from Word").list();
 
         session.getTransaction().commit();
+        session.close();
         return listWords == null ? new ArrayList<Word>() : listWords;
     }
+    
+    
+    
 }

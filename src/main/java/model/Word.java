@@ -15,7 +15,7 @@ public class Word {
     @Column(name = "id")
     private int id;
 
-    @Column(unique = true)
+    @Column(unique = true,name="word")
     private String word;
 
     private String type;

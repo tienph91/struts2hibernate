@@ -1978,3 +1978,17 @@ div.inner-footer {
 		max-width: 400px
 	}
 }
+
+ol{
+	list-style-type: upper-alpha !important;
+	margin-left: 0px;
+	
+}
+
+.inputAw {
+	margin-top: 10px !important;
+}
+
+.liAw{
+	margin-top: 0px !important;
+}

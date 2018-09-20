@@ -1,10 +1,17 @@
 package action;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
+import com.mysql.cj.Session;
 import com.opensymphony.xwork2.ActionSupport;
 
+import dao.AnswerDao;
 import dao.WordDao;
+import model.Answer;
+import model.Question;
 import model.Word;
 
 public class WordAction extends ActionSupport {
@@ -14,21 +21,41 @@ public class WordAction extends ActionSupport {
      */
     private static final long serialVersionUID = 1L;
 
-    private List<Word> listWords;
+    
+    private List<Question> listQuestion;
 
     public String execute() throws Exception {
+    	listQuestion = new ArrayList<Question>();
+    	List<Word> listWords;
+        List<Answer> listAnswer;
+        int numOfQuestion = 5;
+        AnswerDao answerDao = new AnswerDao(); 
+        
 
         listWords = new WordDao().getListWord();
+        Collections.shuffle(listWords);
+        if(listWords.size()<5) {
+        	numOfQuestion = listWords.size();
+        }
+        for(int i=0;i<numOfQuestion;i++) {
+        	Question question=new Question();
+        	listAnswer = answerDao.getListAnswer(listWords.get(i).getId());
+        	Collections.shuffle(listAnswer);
+        	question.setWord(listWords.get(i));
+        	question.setListAnswer(listAnswer);
+        	listQuestion.add(question);
+        }
+        
 
         return SUCCESS;
     }
 
-    public List<Word> getListWords() {
-        return listWords;
-    }
+	public List<Question> getListQuestion() {
+		return listQuestion;
+	}
 
-    public void setListWords(List<Word> listWords) {
-        this.listWords = listWords;
-    }
+	public void setListQuestion(List<Question> listQuestion) {
+		this.listQuestion = listQuestion;
+	}
 
 }
