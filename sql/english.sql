@@ -1,7 +1,7 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : mysql
+Source Server         : english
 Source Server Version : 50637
 Source Host           : localhost:3306
 Source Database       : english
@@ -10,12 +10,25 @@ Target Server Type    : MYSQL
 Target Server Version : 50637
 File Encoding         : 65001
 
-Date: 2018-08-02 11:36:21
+Date: 2018-09-20 17:13:04
 */
 
 SET FOREIGN_KEY_CHECKS=0;
+
 -- ----------------------------
--- Table structure for `word`
+-- Table structure for answer
+-- ----------------------------
+DROP TABLE IF EXISTS `answer`;
+CREATE TABLE `answer` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `answer` varchar(255) NOT NULL,
+  `wordId` int(11) NOT NULL,
+  `correctAnswer` bit(1) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Table structure for word
 -- ----------------------------
 DROP TABLE IF EXISTS `word`;
 CREATE TABLE `word` (
@@ -28,10 +41,4 @@ CREATE TABLE `word` (
   `etc` varchar(1000) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `word` (`word`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
-
--- ----------------------------
--- Records of word
--- ----------------------------
-INSERT INTO `Word` VALUES ('3', 'absorb', 'verb', null, 'etc', 'etc', 'etc');
-INSERT INTO `Word` VALUES ('4', 'aggressive', 'adj', 'etd', 'etd', 'abc', 'abc');
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
