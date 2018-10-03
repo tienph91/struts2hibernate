@@ -28,12 +28,12 @@ public class WordAction extends ActionSupport {
         listQa = new ArrayList<QuestionAnswer>();
         List<Word> listWords;
         List<Answer> listAnswer;
-        int numOfQuestion = 5;
+        int numOfQuestion = 10;
         AnswerDao answerDao = new AnswerDao();
 
         listWords = new WordDao().getListWord();
         Collections.shuffle(listWords);
-        if (listWords.size() < 5) {
+        if (listWords.size() < 10) {
             numOfQuestion = listWords.size();
         }
         for (int i = 0; i < numOfQuestion; i++) {

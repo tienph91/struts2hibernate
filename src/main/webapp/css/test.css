@@ -14,21 +14,34 @@ body {
 	font-size: 16px;
 }
 
+body.body-index {
+	background-image: url("../image/background2.jpg");
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+
+body.body-test {
+	background: url("../image/background2.jpg") no-repeat center center
+		fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
 h1 {
-	font-size: 17px;
-	margin: 0;
-	padding: 0;
+	font-size: 20px;
+	margin-left:50% !important;
 	border: 0;
 	color: #666;
-	line-height: 1.5;
 }
 
 h2 {
 	font-size: 20px;
 	color: black;
 	clear: both;
-	margin-top: 20px;
-	margin-left: 43%;
+	margin-top: 40px;
+	margin-left: 40%;
 	margin-bottom: 20px;
 }
 
@@ -325,8 +338,9 @@ h3.h3-read-more {
 
 .bix-div-container {
 	width: 100%;
-	padding-top: 10px;
+	padding-top: 30px;
 	padding-bottom: 10px;
+	padding-left: 100px;
 }
 
 .bix-div-container .bix-div-answer p {
@@ -1877,31 +1891,49 @@ ol {
 	margin-left: 30px;
 	margin-top: 10px;
 }
-.true + label{
+
+.true+label {
 	color: green;
 }
 
-.false + label{
+.false+label {
 	color: red;
 }
-.submit{
-	margin-left: 45%;
+
+.submit {
+	margin-left: 42%;
 	border-radius: 8px;
-	
+	background-color: rgb(94, 172, 26);
 }
 
 .submit:hover {
-	background-color: grey; 
-	color: white;
+	color: red;
 }
-.testBody{
+
+.testBody {
 	margin-left: 30px;
 	margin-top: 20px;
 }
-.div-clock{
-	color: red;
-	font-size:25px;
-	margin-left: 50%;
-	width: 100%;
-	font-weight: bold;
+
+.div-clock {
+	color: white;
+	padding: 10px;
+	position: fixed;
+	z-index: 1;
+	bottom: 60px;
+	left: 1px;
+	width: auto;
+	background-color: rgb(94, 172, 26);
+}
+
+.ul-index {
+	font-size: 18px;
+	color: black;
+	clear: both;
+	margin-top: 20px;
+	margin-left: 38%;
+	margin-bottom: 20px;
+}
+p{
+	color: black;
 }

@@ -14,7 +14,8 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
-<body onload="f1">
+<body onload="f1" class="body-test">
+    <h1>Test</h1>
 
 	<s:if test="%{count !=null }">
 		<p class="correct">
@@ -27,7 +28,7 @@
 		style="width: 100%; display: block; margin-left: 30px; margin-top: 20px;"
 		class="mx-none">
 		<s:if test="%{count ==null }">
-			<div id="clock" class="div-clock"></div>
+			<div id="clock" class="div-clock">Start</div>
 		</s:if>
 
 		<div class="bix-div-container">
@@ -93,7 +94,7 @@
 	<script type="text/javascript">
 		//  Countdown Timer
 		var min = 4;
-		var sec = 59;
+		var sec = 60;
 		var interval = setInterval(function() {
 			if (sec > 0) {
 				sec = sec - 1;
